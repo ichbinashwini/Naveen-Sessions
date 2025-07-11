@@ -119,8 +119,21 @@ public class ElementUtil {
                 e.click();
                 Thread.sleep(2000);
                 System.out.println("Clicked on = "+clickOn);
+                break;
             }
         }
 
     }
+
+    public void getDropDownOptionsWithoutSelectClass (String dropDown ,By dropDownLocator){
+        List<WebElement> countryWebElements = driver.findElements(dropDownLocator);
+
+        System.out.println(" ");
+        System.out.println("This is the list of " +dropDown);
+
+        for (WebElement e : countryWebElements) {
+            System.out.println(e.getText());
+        }
+    }
+
 }
