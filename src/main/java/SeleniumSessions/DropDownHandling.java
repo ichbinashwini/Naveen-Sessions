@@ -23,11 +23,11 @@ public class DropDownHandling {
         By countryDropDown = By.cssSelector("select#Form_getForm_Country");
         By noOfEmployeesDropdown = By.cssSelector("select#Form_getForm_NoOfEmployees");
 
-        eUtil.selectDropByIndex(countryDropDown,3);
+        eUtil.selectDropDownByIndex(countryDropDown,3);
         eUtil.selectDropDownByValue(countryDropDown, "France");
         eUtil.selectDropDownByVisibilty(countryDropDown,"Zaire");
 
-        eUtil.selectDropByIndex(noOfEmployeesDropdown,2);
+        eUtil.selectDropDownByIndex(noOfEmployeesDropdown,2);
         eUtil.selectDropDownByValue(noOfEmployeesDropdown,"51 - 200");
         eUtil.selectDropDownByVisibilty(noOfEmployeesDropdown, "> 1,000");
 

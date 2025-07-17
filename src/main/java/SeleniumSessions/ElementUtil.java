@@ -1,9 +1,7 @@
 package SeleniumSessions;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
@@ -11,9 +9,12 @@ import java.util.List;
 public class ElementUtil {
 
     private WebDriver driver;
+    private Actions actions;
 
     public ElementUtil(WebDriver driver) {
+
         this.driver = driver;
+        actions = new Actions(driver);
     }
 
     public WebElement getWebElement(By elementLocator) {
@@ -89,7 +90,7 @@ public class ElementUtil {
     }
 //********************** DropDown methods **************************************
 
-    public void selectDropByIndex(By dropDownLocator, int optionIndex) throws InterruptedException {
+    public void selectDropDownByIndex(By dropDownLocator, int optionIndex) throws InterruptedException {
         Select dropDownWebEle = new Select(getWebElement(dropDownLocator));
         dropDownWebEle.selectByIndex(optionIndex);
         Thread.sleep(2000);
@@ -98,6 +99,7 @@ public class ElementUtil {
     public void selectDropDownByValue(By dropDownLocator, String value) throws InterruptedException {
         Select dropDownWebEle = new Select(getWebElement(dropDownLocator));
         dropDownWebEle.selectByValue(value);
+        System.out.println("Selected "+ value);
         Thread.sleep(2000);
     }
 
@@ -134,6 +136,18 @@ public class ElementUtil {
         for (WebElement e : countryWebElements) {
             System.out.println(e.getText());
         }
+    }
+
+    //*********************** Scrolling methods *********************************
+
+    public void partialScrollDown() throws InterruptedException {
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        Thread.sleep(2000);
+    }
+
+    public void partialScrollUp() throws InterruptedException {
+        actions.sendKeys(Keys.PAGE_UP).perform();
+        Thread.sleep(2000);
     }
 
 }
