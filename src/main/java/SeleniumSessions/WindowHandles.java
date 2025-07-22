@@ -29,6 +29,7 @@ public class WindowHandles {
         actions.scrollToElement(driver.findElement(By.linkText("OrangeHRM")))
                 .click(driver.findElement(By.linkText("OrangeHRM"))).perform();
         Thread.sleep(2000);
+
 //1. Get window handles
         Set<String> handles = driver.getWindowHandles();
         Iterator<String> it = handles.iterator();
@@ -38,6 +39,7 @@ public class WindowHandles {
 
         String w2 = it.next();
         System.out.println(w2);
+
 //2.Switch window
 
         driver.switchTo().window(w2);
@@ -47,9 +49,6 @@ public class WindowHandles {
 
         driver.switchTo().window(w1);
         System.out.println("Child window title = "+driver.getTitle());
-
-
-
 
         driver.quit();
     }
